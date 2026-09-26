@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Wings Escapes | Explore India</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            background: #0a0a0a;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: rgba(15, 15, 15, 0.98);
+            box-shadow: 0 2px 15px rgba(220, 38, 38, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .brand-symbol {
+            width: 120px;
+            height: 70px;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .brand-wordmark {
+            display: flex;
+            flex-direction: column;
+            line-height: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .brand-wordmark .top {
+            font-size: 22px;
+            font-weight: 900;
+            color: #dc2626;
+        }
+
+        .brand-wordmark .bottom {
+            font-size: 18px;
+            font-weight: 800;
+            color: #f5f5f5;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #f5f5f5;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #dc2626;
+        }
+
+        .book-btn {
+            background: #dc2626;
+            color: white !important;
+            padding: 10px 18px;
+            border-radius: 25px;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 100px 20px 40px;
+
+            background:
+                linear-gradient(rgba(20, 20, 20, 0.75), rgba(15, 15, 15, 0.8)),
+                url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=2000&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 80px);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 span {
+            color: #dc2626;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn,
+        .secondary-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-btn {
+            background: #dc2626;
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background: #b91c1c;
+            transform: translateY(-3px);
+        }
+
+        .secondary-btn {
+            border: 2px solid #dc2626;
+            color: #dc2626;
+            background: transparent;
+        }
+
+        .secondary-btn:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 85px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #dc2626;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #cbd5e1;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* DESTINATIONS */
+        .destinations {
+            background: #1a1a1a;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .destination-card {
+            position: relative;
+            height: 320px;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.15);
+            border: 2px solid #dc2626;
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .destination-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 20px 20px;
+            color: white;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95));
+        }
+
+        .destination-overlay h3 {
+            font-size: 25px;
+            color: #dc2626;
+        }
+
+        /* PACKAGES */
+        .packages {
+            background: #0a0a0a;
+        }
+
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        .package-card {
+            background: #1a1a1a;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
+            transition: 0.3s;
+            border-left: 4px solid #dc2626;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(220, 38, 38, 0.2);
+        }
+
+        .package-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .package-content {
+            padding: 23px;
+        }
+
+        .package-content h3 {
+            color: #dc2626;
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .package-content p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+        }
+
+        .details {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        .price {
+            color: #dc2626;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .package-btn {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #dc2626;
+            color: white;
+            padding: 11px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .package-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* WHY US */
+        .why-us {
+            background: #1a1a1a;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature {
+            padding: 25px;
+            background: #0a0a0a;
+            border-radius: 12px;
+            border-top: 3px solid #dc2626;
+        }
+
+        .feature-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+            background: rgba(220, 38, 38, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            border: 2px solid #dc2626;
+        }
+
+        .feature h3 {
+            color: #dc2626;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #cbd5e1;
+        }
+
+        /* OFFER */
+        .offer {
+            background:
+                linear-gradient(90deg, rgba(220, 38, 38, 0.95), rgba(180, 25, 25, 0.9)),
+                url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .offer h2 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .offer p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            background: #0a0a0a;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial {
+            background: #1a1a1a;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.1);
+            border-left: 3px solid #dc2626;
+        }
+
+        .stars {
+            color: #dc2626;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial p {
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .testimonial h4 {
+            color: #dc2626;
+        }
+
+        /* CONTACT */
+        .contact {
+            background: #1a1a1a;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .contact-info h2 {
+            color: #dc2626;
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            margin: 18px 0;
+            font-size: 17px;
+            color: #cbd5e1;
+        }
+
+        .contact-item strong {
+            color: #dc2626;
+        }
+
+        form {
+            background: #0a0a0a;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #dc2626;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #dc2626;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            outline: none;
+            background: #1a1a1a;
+            color: #f5f5f5;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #fbbf24;
+            box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 25px;
+            background: #dc2626;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #b91c1c;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000000;
+            color: white;
+            padding: 45px 7% 20px;
+            border-top: 3px solid #dc2626;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+            color: #dc2626;
+        }
+
+        footer p {
+            color: #cbd5e1;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer ul li {
+            margin: 8px 0;
+        }
+
+        footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #dc2626;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #dc2626;
+            padding-top: 20px;
+            color: #94a3b8;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 65px 5%;
+            }
+
+            .brand-symbol {
+                width: 90px;
+                height: 55px;
+            }
+
+            .brand-wordmark .top {
+                font-size: 16px;
+            }
+
+            .brand-wordmark .bottom {
+                font-size: 13px;
+                letter-spacing: 1px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#home" class="logo" aria-label="Smart Wings Escapes home">
+            <svg class="brand-symbol" viewBox="0 0 220 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Smart Wings logo">
+                <defs>
+                    <linearGradient id="wingGrad" x1="0" x2="1">
+                        <stop offset="0%" stop-color="#142c4c"/>
+                        <stop offset="100%" stop-color="#0f1f3b"/>
+                    </linearGradient>
+                </defs>
+
+                <g transform="translate(10,8)">
+                    <path d="M102 8 C61 0, 34 18, 18 63 C14 74, 12 93, 18 100 C24 108, 42 100, 50 89 C64 67, 88 57, 116 53 C132 51, 146 49, 154 42 C170 30, 171 18, 161 12 C149 5, 136 5, 102 8Z" fill="url(#wingGrad)" opacity="0.95"/>
+                    <path d="M124 18 C169 18, 194 35, 211 64 C218 76, 213 83, 203 85 C191 87, 177 83, 164 74 C149 63, 139 55, 126 52 C118 50, 114 43, 117 35 C119 28, 121 23, 124 18Z" fill="url(#wingGrad)" opacity="0.9"/>
+                    <path d="M98 8 C89 18, 80 25, 66 29 C54 33, 41 38, 30 47 C16 58, 12 69, 15 82 C20 73, 35 61, 49 55 C68 46, 82 39, 93 26 C100 17, 103 12, 98 8Z" fill="#0d1d34" opacity="0.90"/>
+
+                    <path d="M85 11 L118 56 L108 50 L116 92 L95 100 L90 68 L88 58 L69 71 L54 67 L79 42 L64 31 L85 11Z" fill="#d92d2d"/>
+
+                    <g transform="translate(70,18)">
+                        <path d="M0 52 L66 0 L84 20 L64 30 L76 86 L54 92 L46 56 L0 52Z" fill="#0f274a"/>
+                        <path d="M12 53 L48 16 L62 26 L38 62 L50 87 L24 83 L12 53Z" fill="#d92d2d"/>
+                    </g>
+
+                    <g transform="translate(38,38)">
+                        <circle cx="62" cy="42" r="38" fill="#071f3b" stroke="#0f274a" stroke-width="3"/>
+                        <g fill="none" stroke="#f0f5ff" stroke-width="1.4" opacity="0.8">
+                            <path d="M22 42 H102 M62 4 V80 M30 15 C47 28, 77 28, 94 15 M30 69 C47 58, 77 58, 94 69"/>
+                            <path d="M14 28 C33 33, 41 41, 62 42 C82 43, 91 52, 110 60 M14 56 C33 52, 41 44, 62 42 C82 40, 90 33, 110 24"/>
+                        </g>
+                        <g fill="#0c2448">
+                            <path d="M25 40 L40 34 L53 40 L40 46 Z"/>
+                            <path d="M79 38 L95 35 L92 49 L76 50 Z"/>
+                            <path d="M52 17 L64 11 L74 22 L62 28 Z"/>
+                            <path d="M52 67 L64 72 L74 60 L62 54 Z"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+
+            <div class="brand-wordmark">
+                <span class="top">SMART WINGS</span>
+                <span class="bottom">ESCAPES</span>
+            </div>
+        </a>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#about">Why Us</a></li>
+            <li><a href="#contact" class="book-btn">Book Now</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Discover <span>India</span>
+            </h1>
+
+            <p>
+                Explore breathtaking destinations, unforgettable experiences,
+                and exciting adventures with Smart Wings Escapes.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#packages" class="primary-btn">
+                    Explore Packages
+                </a>
+
+                <a href="#contact" class="secondary-btn">
+                    Plan My Trip
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- DESTINATIONS -->
+    <section class="destinations" id="destinations">
+
+        <div class="section-title">
+            <h2>Popular Destinations</h2>
+            <p>
+                From mountains and beaches to royal cities and peaceful
+                backwaters, discover the incredible diversity of India.
+            </p>
+        </div>
+
+        <div class="destination-grid">
+
+            <div class="destination-card">
+                <img
+                    src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=900&q=80"
+                    alt="Goa"
+                >
+                <div class="destination-overlay">
+                    <h3>Goa</h3>
+                    <p>Beaches • Nightlife • Adventure</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img
+                    src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=900&q=80"
+                    alt="Rajasthan"
+                >
+                <div class="destination-overlay">
+                    <h3>Rajasthan</h3>
+                    <p>Palaces • Culture • Desert</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img
+                    src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=900&q=80"
+                    alt="Kerala"
+                >
+                <div class="destination-overlay">
+                    <h3>Kerala</h3>
+                    <p>Backwaters • Nature • Relaxation</p>
+                </div>
+            </div>
+
+            <div class="destination-card">
+                <img
+                    src="https://images.unsplash.com/photo-1506461883276-594a12b11cf3?auto=format&fit=crop&w=900&q=80"
+                    alt="Himachal Pradesh"
+                >
+                <div class="destination-overlay">
+                    <h3>Himachal Pradesh</h3>
+                    <p>Mountains • Snow • Trekking</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PACKAGES -->
+    <section class="packages" id="packages">
+
+        <div class="section-title">
+            <h2>Our Travel Packages</h2>
+            <p>
+                Choose a package and start planning your next unforgettable
+                Indian adventure.
+            </p>
+        </div>
+
+        <div class="package-grid">
+
+            <!-- PACKAGE 1 -->
+            <div class="package-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1000&q=80"
+                    alt="Goa package"
+                >
+
+                <div class="package-content">
+
+                    <h3>Goa Beach Escape</h3>
+
+                    <p>
+                        Relax on beautiful beaches and experience Goa's
+                        vibrant culture and nightlife.
+                    </p>
+
+                    <div class="details">
+                        <span>📅 4 Days / 3 Nights</span>
+                        <span>👥 2 People</span>
+                    </div>
+
+                    <div class="price">₹14,999</div>
+
+                    <br>
+
+                    <a href="#contact" class="package-btn">
+                        Book Package
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- PACKAGE 2 -->
+            <div class="package-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1000&q=80"
+                    alt="Rajasthan package"
+                >
+
+                <div class="package-content">
+
+                    <h3>Royal Rajasthan</h3>
+
+                    <p>
+                        Explore magnificent forts, royal palaces and the
+                        golden landscapes of Rajasthan.
+                    </p>
+
+                    <div class="details">
+                        <span>📅 6 Days / 5 Nights</span>
+                        <span>👥 2 People</span>
+                    </div>
+
+                    <div class="price">₹24,999</div>
+
+                    <br>
+
+                    <a href="#contact" class="package-btn">
+                        Book Package
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- PACKAGE 3 -->
+            <div class="package-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=1000&q=80"
+                    alt="Kerala package"
+                >
+
+                <div class="package-content">
+
+                    <h3>Kerala Paradise</h3>
+
+                    <p>
+                        Cruise through peaceful backwaters and experience
+                        Kerala's lush natural beauty.
+                    </p>
+
+                    <div class="details">
+                        <span>📅 5 Days / 4 Nights</span>
+                        <span>👥 2 People</span>
+                    </div>
+
+                    <div class="price">₹19,999</div>
+
+                    <br>
+
+                    <a href="#contact" class="package-btn">
+                        Book Package
+                    </a>
+
+                </div>
+            </div>
+
+
+            <!-- PACKAGE 4 -->
+            <div class="package-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1000&q=80"
+                    alt="Agra package"
+                >
+
+                <div class="package-content">
+
+                    <h3>Golden Triangle</h3>
+
+                    <p>
+                        Visit Delhi, Agra and Jaipur and discover India's
+                        fascinating history and architecture.
+                    </p>
+
+                    <div class="details">
+                        <span>📅 5 Days / 4 Nights</span>
+                        <span>👥 2 People</span>
+                    </div>
+
+                    <div class="price">₹18,499</div>
+
+                    <br>
+
+                    <a href="#contact" class="package-btn">
+                        Book Package
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-us" id="about">
+
+        <div class="section-title">
+            <h2>Why Choose Smart Wings?</h2>
+            <p>
+                We make your journey easier, comfortable and memorable.
+            </p>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="feature-icon">✈️</div>
+                <h3>Easy Booking</h3>
+                <p>
+                    Book your dream vacation quickly and easily.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>Affordable Packages</h3>
+                <p>
+                    Enjoy carefully designed packages at competitive prices.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🏨</div>
+                <h3>Quality Stays</h3>
+                <p>
+                    Comfortable accommodation selected for your journey.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🧭</div>
+                <h3>Travel Support</h3>
+                <p>
+                    Get assistance throughout your travel experience.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SPECIAL OFFER -->
+    <section class="offer">
+
+        <h2>Ready for Your Next Adventure?</h2>
+
+        <p>
+            Plan your perfect Indian getaway with Smart Wings Escapes.
+        </p>
+
+        <a href="#contact" class="primary-btn">
+            Start Planning
+        </a>
+
+    </section>
+
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+
+        <div class="section-title">
+            <h2>What Our Travelers Say</h2>
+            <p>
+                Experiences from travelers who explored India with us.
+            </p>
+        </div>
+
+        <div class="testimonial-grid">
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Our Goa trip was amazing! Everything was organized
+                    perfectly and we had a wonderful time."
+                </p>
+
+                <h4>— Priya S.</h4>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "The Rajasthan package was an unforgettable experience.
+                    The forts and culture were incredible."
+                </p>
+
+                <h4>— Rahul K.</h4>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    "Great experience from start to finish. Kerala was
+                    beautiful and the trip was very relaxing."
+                </p>
+
+                <h4>— Ananya R.</h4>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <div class="contact-container">
+
+            <div class="contact-info">
+
+                <h2>Plan Your Escape</h2>
+
+                <p>
+                    Tell us where you want to go and we'll help you create
+                    an unforgettable trip around India.
+                </p>
+
+                <div class="contact-item">
+                    📞 <strong>Phone:</strong> +91 98765 43210
+                </div>
+
+                <div class="contact-item">
+                    📧 <strong>Email:</strong> hello@smartwingsescapes.com
+                </div>
+
+                <div class="contact-item">
+                    📍 <strong>Location:</strong> Hyderabad, India
+                </div>
+
+            </div>
+
+
+            <form id="bookingForm">
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Phone Number"
+                    required
+                >
+
+                <select id="destination" required>
+
+                    <option value="">
+                        Select Destination
+                    </option>
+
+                    <option value="Goa">
+                        Goa
+                    </option>
+
+                    <option value="Rajasthan">
+                        Rajasthan
+                    </option>
+
+                    <option value="Kerala">
+                        Kerala
+                    </option>
+
+                    <option value="Himachal Pradesh">
+                        Himachal Pradesh
+                    </option>
+
+                    <option value="Golden Triangle">
+                        Golden Triangle
+                    </option>
+
+                </select>
+
+                <textarea
+                    id="message"
+                    placeholder="Tell us about your trip..."
+                ></textarea>
+
+                <button type="submit" class="submit-btn">
+                    Send Enquiry
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h3>Smart Wings Escapes</h3>
+
+                <p>
+                    Your gateway to unforgettable adventures across India.
+                    Discover. Explore. Escape.
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#packages">Packages</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Follow Us</h3>
+
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 Smart Wings Escapes. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        document
+            .getElementById("bookingForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById("name").value;
+
+                const destination =
+                    document.getElementById("destination").value;
+
+                alert(
+                    "Thank you, " +
+                    name +
+                    "! Your enquiry for " +
+                    destination +
+                    " has been received. Our travel team will contact you soon."
+                );
+
+                this.reset();
+
+            });
+
+    </script>
+
+</body>
+</html>
